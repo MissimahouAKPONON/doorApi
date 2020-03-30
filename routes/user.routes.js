@@ -32,9 +32,9 @@ module.exports = (app) => {
   // router.get("/api/test/all", controller.allAccess);
 
   app.get(
-      "/api/user",
+      "/api/user/doorlist",
       [authJwt.verifyToken],
-      controller.userBoard
+      controller.getAllScenario
   );
   app.post(
       "/api/admin/door",
@@ -53,5 +53,6 @@ module.exports = (app) => {
       [authJwt.verifyToken, authJwt.isAdmin],
       controller.adminBoard
   );
+
 
 }

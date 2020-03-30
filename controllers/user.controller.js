@@ -44,7 +44,8 @@ exports.createScenario = (req, res) => {
 };
 
 exports.getAllScenario = (req, res) => {
-
+    const datas =  DoorToDoor.findAll();
+    res.send({datas: datas});
 };
 
 exports.userBoard = (req, res) => {
