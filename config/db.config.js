@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "sodese",
-    PASSWORD: "root",
-    DB: "portea",
+    HOST: "us-cdbr-iron-east-01.cleardb.net",
+    USER: "b4a4ac07f3c41d",
+    PASSWORD: "16d852b0",
+    DB: "heroku_b90c760c438ca00",
     dialect: "mysql",
     pool: {
         max: 5,
