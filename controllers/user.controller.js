@@ -44,8 +44,24 @@ exports.createScenario = (req, res) => {
 };
 
 exports.getAllScenario = (req, res) => {
-    const datas =  DoorToDoor.findAll();
-    res.send({datas: datas});
+    DoorToDoor.findAll().then((datas) => {
+        let tabs = []
+        tabs = datas
+        for (let data of tabs){
+            Scenario.findAll({
+                where: {
+                    doorToDoorId: data.id
+                }
+            }).then((result) => {
+                data.scenarios =[];
+                data.scenarios = result;
+                res.send({datas: data});
+            });
+
+        }
+
+    });
+
 };
 
 exports.userBoard = (req, res) => {
