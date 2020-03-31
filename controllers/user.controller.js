@@ -63,9 +63,9 @@ exports.getAllScenario = (req, res) => {
                 elt.scenarios =scenas;
                 doors.push(elt);
             });
+            res.send({datas: doors});
 
         });
-        res.send({datas: doors});
 
     }).catch((error) => {
         res.send({datas: error});
