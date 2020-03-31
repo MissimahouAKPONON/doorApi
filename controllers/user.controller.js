@@ -49,23 +49,24 @@ exports.getAllScenario = (req, res) => {
 
 
     DoorToDoor.findAll().then((datas) => {
-        res.send({datas: datas});
+        // res.send({datas: datas});
 
-    //     datas.forEach((elt)=>{
-    //         Scenario.findAll({
-    //             where: {
-    //                 doorToDoorId: elt.id
-    //             }
-    //         }).then((result) => {
-    //             result.forEach((el)=>{
-    //                 scenas.push(el);
-    //             });
-    //
-    //         });
-    //         elt.schenarios=scenas;
-    //     });
-    //     res.send({datas: doors});
-    //
+        datas.forEach((elt)=>{
+            Scenario.findAll({
+                where: {
+                    doorToDoorId: elt.id
+                }
+            }).then((result) => {
+                result.forEach((el)=>{
+                    scenas.push(el);
+                });
+                elt.scenarios =scenas;
+                doors.push(elt);
+            });
+
+        });
+        res.send({datas: doors});
+
     }).catch((error) => {
         res.send({datas: error});
     });
