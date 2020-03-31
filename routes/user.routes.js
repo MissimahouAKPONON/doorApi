@@ -29,7 +29,7 @@ module.exports = (app) => {
   //   next();
   // });
 
-  // router.get("/api/test/all", controller.allAccess);
+  router.get("/", controller.userBoard);
 
   app.get(
       "/api/user/doorlist",
