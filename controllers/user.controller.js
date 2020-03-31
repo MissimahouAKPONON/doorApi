@@ -50,7 +50,6 @@ exports.getAllScenario = (req, res) => {
 
 
     DoorToDoor.findAll({
-        attributes: [],
         include:[{
             model: Scenario,
             where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
