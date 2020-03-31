@@ -50,7 +50,7 @@ exports.getAllScenario = (req, res) => {
             where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
         }]
     }).then((datas) => {
-            res.send(datas);
+            res.status(200).send(datas);
     }).catch((error) => {
         res.send({datas: error});
     });
