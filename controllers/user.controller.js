@@ -50,7 +50,7 @@ exports.getAllScenario = (req, res) => {
 
 
     DoorToDoor.findAll().then((datas) => {
-        // res.send({datas: datas});
+
 
         datas.forEach((elt)=>{
             Scenario.findAll({

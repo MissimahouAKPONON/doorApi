@@ -40,6 +40,7 @@ db.user.belongsToMany(db.role, {
     otherKey: "roleId"
 });
 
+db.door.hasMany(db.scenario,);
 db.scenario.belongsTo(db.door,{
     foreignKey: "doorToDoorId"
 });
