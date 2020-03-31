@@ -57,16 +57,11 @@ exports.getAllScenario = (req, res) => {
                     doorToDoorId: elt.id
                 }
             }).then((result) => {
-                // tabs = result
                 scenas = result;
-                elt.schenarios=scenas;
-                res.send({datas: doors});
             });
+            elt.schenarios=scenas;
         });
-
-
-
-
+        res.send({datas: doors});
 
     }).catch((error) => {
         res.send({datas: error});
