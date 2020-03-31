@@ -10,27 +10,27 @@ var bcrypt = require("bcryptjs");
 var authRouter = require('./routes/auth.routes');
 var usersRouter = require('./routes/user.routes');
 
-var app = express();
+var index = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+index.set('views', path.join(__dirname, 'views'));
+index.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+index.use(logger('dev'));
 // parse requests of content-type - application/json
-app.use(bodyParser.json());
+index.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: true}));
+index.use(bodyParser.urlencoded({extended: true}));
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+index.use(express.static(path.join(__dirname, 'public')));
 var corsOptions = {
     origin: "http://localhost:3000"
 };
 
-app.use(cors());
+index.use(cors());
 
-app.use((req, res, next) => {
+index.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
 
     // authorized headers for preflight requests
@@ -38,23 +38,23 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 
-    app.options('*', (req, res) => {
+    index.options('*', (req, res) => {
         // allowed XHR methods
         res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
         res.send();
     });
 });
 
-require("./routes/auth.routes")(app);
-require("./routes/user.routes")(app);
+require("./routes/auth.routes")(index);
+require("./routes/user.routes")(index);
 
-// app.use('/api', usersRouter);
+// index.use('/api', usersRouter);
 // simple route
-app.get("/", (req, res) => {
+index.get("/", (req, res) => {
     res.json({message: "Welcome to bezkoder application."});
 });
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
+// index.use(function(req, res, next) {
 //   next(createError(404));
 // });
 
@@ -106,19 +106,19 @@ db.sequelize.sync();
 //*****************//
 
 // set port, listen for requests
-const PORT = 5050;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+const port = process.env.PORT || 3000;
+index.listen(port, () => {
+    console.log(`Server is running on port ${port}.`);
 });
 // error handler
-// app.use(function(err, req, res, next) {
+// index.use(function(err, req, res, next) {
 //   // set locals, only providing error in development
 //   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+//   res.locals.error = req.index.get('env') === 'development' ? err : {};
 //
 //   // render the error page
 //   res.status(err.status || 500);
 //   res.render('error');
 // });
 
-module.exports = app;
+module.exports = index;
