@@ -33,12 +33,12 @@ module.exports = (app) => {
 
   app.get(
       "/api/user/doorlist",
-      // [authJwt.verifyToken],
+      [authJwt.verifyToken],
       controller.getAllScenario
   );
   app.post(
       "/api/admin/door",
-      // [authJwt.verifyToken, authJwt.isAdmin],
+      [authJwt.verifyToken, authJwt.isAdmin],
       controller.createScenario
   );
 
