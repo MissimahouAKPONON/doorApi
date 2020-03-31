@@ -66,9 +66,9 @@ exports.getAllScenario = (req, res) => {
     //     });
     //     res.send({datas: doors});
     //
-    // }).catch((error) => {
-    //     res.send({datas: error});
-    // });
+    }).catch((error) => {
+        res.send({datas: error});
+    });
 
 };
 
