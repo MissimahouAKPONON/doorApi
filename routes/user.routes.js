@@ -38,7 +38,7 @@ module.exports = (app) => {
   );
   app.post(
       "/api/admin/door",
-      [authJwt.verifyToken, authJwt.isAdmin],
+      // [authJwt.verifyToken, authJwt.isAdmin],
       controller.createScenario
   );
 
