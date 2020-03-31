@@ -44,22 +44,29 @@ exports.createScenario = (req, res) => {
 };
 
 exports.getAllScenario = (req, res) => {
+    let doors=[];
+    let scenas=[];
+
+
     DoorToDoor.findAll().then((datas) => {
-        res.send({datas: datas});
-// let tabs;
-//         for (let data of datas){
-//
-//             Scenario.findAll({
-//                 where: {
-//                     doorToDoorId: data.id
-//                 }
-//             }).then((result) => {
-//                 tabs = result
-//                 res.send({datas: tabs});
-//
-//             });
-//
-//         }
+        // res.send({datas: datas});
+        doors = datas;
+        doors.forEach((elt)=>{
+            Scenario.findAll({
+                where: {
+                    doorToDoorId: elt.id
+                }
+            }).then((result) => {
+                // tabs = result
+                scenas = result;
+                elt.schenarios=scenas;
+                res.send({datas: doors});
+            });
+        });
+
+
+
+
 
     }).catch((error) => {
         res.send({datas: error});
