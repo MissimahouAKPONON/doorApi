@@ -29,14 +29,14 @@ isAdmin = (req, res, next) => {
             for (let i = 0; i < roles.length; i++) {
                 if (roles[i].name === "admin") {
                     next();
-                    return;
+                    return true;
                 }
             }
 
             res.status(403).send({
                 message: "Require Admin Role!"
             });
-            return;
+            return false;
         });
     });
 };
@@ -47,14 +47,14 @@ isUser = (req, res, next) => {
             for (let i = 0; i < roles.length; i++) {
                 if (roles[i].name === "user") {
                     next();
-                    return;
+                    return true;
                 }
             }
 
             res.status(403).send({
                 message: "Require User Role!"
             });
-            return;
+            return false;
         });
     });
 };
