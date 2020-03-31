@@ -58,16 +58,13 @@ exports.getAllScenario = (req, res) => {
                     doorToDoorId: elt.id
                 }
             }).then((result) => {
-                result.forEach((el)=>{
-                    scenas.push(el);
-                    door.id =elt.id;
-                    door.title =elt.title;
-                    door.createdAt =elt.createdAt;
-                    door.updatedAt =elt.updatedAt;
-                    door.scenarios =scenas;
-                    doors.push(door);
-                });
-
+                scenas=result
+                door.id =elt.id;
+                door.title =elt.title;
+                door.createdAt =elt.createdAt;
+                door.updatedAt =elt.updatedAt;
+                door.scenarios =scenas;
+                doors.push(door);
 
                 res.send({datas: doors});
 
