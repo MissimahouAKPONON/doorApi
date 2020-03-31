@@ -49,25 +49,31 @@ exports.getAllScenario = (req, res) => {
     let scenas=[];
 
 
-    DoorToDoor.findAll().then((datas) => {
+    DoorToDoor.findAll({
+        attributes: [],
+        include:[{
+            model: Scenario,
+            where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
+        }]
+    }).then((datas) => {
 
+            res.send({datas: datas});
 
-        datas.forEach((elt)=>{
-            Scenario.findAll({
-                where: {
-                    doorToDoorId: elt.id
-                }
-            }).then((result) => {
-                scenas=result
-                door.id =elt.id;
-                door.title =elt.title;
-                door.createdAt =elt.createdAt;
-                door.updatedAt =elt.updatedAt;
-                door.scenarios =scenas;
-                doors.push(door);
-            });
-            res.send({datas: doors});
-        });
+        // datas.forEach((elt)=>{
+        //     Scenario.findAll({
+        //         where: {
+        //             doorToDoorId: elt.id
+        //         }
+        //     }).then((result) => {
+        //         scenas=result
+        //         door.id =elt.id;
+        //         door.title =elt.title;
+        //         door.createdAt =elt.createdAt;
+        //         door.updatedAt =elt.updatedAt;
+        //         door.scenarios =scenas;
+        //         doors.push(door);
+        //     });
+        // });
 
     }).catch((error) => {
         res.send({datas: error});
