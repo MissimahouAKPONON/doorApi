@@ -65,11 +65,8 @@ exports.getAllScenario = (req, res) => {
                 door.updatedAt =elt.updatedAt;
                 door.scenarios =scenas;
                 doors.push(door);
-
-                res.send({datas: doors});
-
             });
-
+            res.send({datas: doors});
         });
 
     }).catch((error) => {
