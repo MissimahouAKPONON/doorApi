@@ -44,6 +44,7 @@ exports.createScenario = (req, res) => {
 };
 
 exports.getAllScenario = (req, res) => {
+    let door={id:'',title:'',scenarios:[],createdAt:'',updatedAt:''};
     let doors=[];
     let scenas=[];
 
@@ -60,10 +61,14 @@ exports.getAllScenario = (req, res) => {
                 result.forEach((el)=>{
                     scenas.push(el);
                 });
-                elt.scenarios =scenas;
-                doors.push(elt);
-                res.send({datas: doors});
+                door.id =elt.id;
+                door.title =elt.title;
+                door.createdAt =elt.createdAt;
+                door.updatedAt =elt.updatedAt;
+                door.scenarios =scenas;
+                doors.push(door);
             });
+            res.send({datas: doors});
 
         });
 
