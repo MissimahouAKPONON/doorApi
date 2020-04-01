@@ -1,9 +1,10 @@
 module.exports = {
     HOST: "us-cdbr-iron-east-01.cleardb.net",
-    USER: "b4a4ac07f3c41d",
-    PASSWORD: "16d852b0",
-    DB: "heroku_b90c760c438ca00",
+    USER: "bfe1c659da0754",
+    PASSWORD: "2d4da2ca",
+    DB: "heroku_44d75109700ef34",
     dialect: "mysql",
+    reconnect: true,
     pool: {
         max: 5,
         min: 0,
