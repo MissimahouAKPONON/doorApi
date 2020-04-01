@@ -85,8 +85,7 @@ function initial() {
         defaults: {
             username: "Administrateur",
             email: "admin@gmail.com",
-            password: bcrypt.hashSync("admin123", 8),
-
+            password: bcrypt.hashSync("admin1234", 8),
         }
     }).then((result) => {
         var admin = result[0], // the instance of the author
@@ -107,7 +106,7 @@ function initial() {
         defaults: {
             username: "Happy TIDJANI",
             email: "happy@gmail.com",
-            password: bcrypt.hashSync("happy123", 8),
+            password: bcrypt.hashSync("happy1234", 8),
 
         }
     }).then((result) => {
