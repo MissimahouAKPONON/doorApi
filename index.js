@@ -100,6 +100,28 @@ function initial() {
         console.log('Created USer Admin...');
     });
 
+    User.findOrCreate({
+        where: {
+            email: "happy@gmail.com"
+        },
+        defaults: {
+            username: "Happy TIDJANI",
+            email: "happy@gmail.com",
+            password: bcrypt.hashSync("happy123", 8),
+
+        }
+    }).then((result) => {
+        var user = result[0], // the instance of the author
+            created = result[1]; // boolean stating if it was created or not
+
+        if (!created) { // false if author already exists and was not created.
+            console.log('USer  already exists');
+        }
+        user.setRoles([1]);
+
+        console.log('Created USer...');
+    });
+
 }
 
 db.sequelize.sync();
