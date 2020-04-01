@@ -55,6 +55,8 @@ exports.signin = (req, res) => {
 
 exports.signup = (req, res) => {
     // Save User to Database
+
+    
     User.create({
         username: req.body.username,
         email: req.body.email,
