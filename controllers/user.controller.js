@@ -11,7 +11,7 @@ exports.createScenario = (req, res) => {
          scenario;
         Scenario.create({
             request: scenario.request,
-            answer: scenario.answers,
+            answer: scenario.answer,
             placeholder: scenario.placeholder
         })
             .then(scenarii => {
