@@ -44,29 +44,29 @@ exports.createScenario = (req, res) => {
 };
 
 exports.getAllScenario = (req, res) => {
-    // DoorToDoor.findAll({
-    //     include:[{
-    //         model: Scenario,
-    //         where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
-    //     }]
-    // }).then((datas) => {
-    //         res.status(200).send(datas);
-    // }).catch((error) => {
-    //     res.send({datas: error});
-    // });
-
-    DoorToDoor.findById(1
-        ,{
+    DoorToDoor.findAll({
         include:[{
             model: Scenario,
             where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
         }]
-    }
-    ).then((result) => {
-            res.status(200).send(result);
+    }).then((datas) => {
+            res.status(200).send(datas);
     }).catch((error) => {
-        res.status(401).send({error: error});
+        res.send({datas: error});
     });
+
+    // DoorToDoor.findById(1
+    //     ,{
+    //     include:[{
+    //         model: Scenario,
+    //         where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
+    //     }]
+    // }
+    // ).then((result) => {
+    //         res.status(200).send(result);
+    // }).catch((error) => {
+    //     res.status(401).send({error: error});
+    // });
 
 };
 
