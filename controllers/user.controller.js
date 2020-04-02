@@ -61,6 +61,19 @@ exports.userBoard = (req, res) => {
     res.status(200).send("User Content.");
 };
 
+exports.getDoor = (req, res) => {
+    DoorToDoor.findById(req.params.id,{
+        include:[{
+            model: Scenario,
+            where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
+        }]
+    }).then((result) => {
+            res.status(200).send(result);
+    }).catch((error) => {
+        res.status(401).send({error: error});
+    });
+};
+
 exports.adminBoard = (req, res) => {
     res.status(200).send("Admin Content.");
 };

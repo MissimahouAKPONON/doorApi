@@ -36,6 +36,11 @@ module.exports = (app) => {
       // [authJwt.verifyToken],
       controller.getAllScenario
   );
+  app.get(
+    "/api/user/doorlist/door/:id",
+    // [authJwt.verifyToken],
+    controller.getDoor
+    );
   app.post(
       "/api/admin/door",
       // [authJwt.verifyToken, authJwt.isAdmin],
