@@ -15,7 +15,7 @@ exports.signin = (req, res) => {
     })
         .then(user => {
             if (!user) {
-                return res.status(404).send({ message: "User Not found." });
+                return res.status(404).send({message: "User Not found."});
             }
 
             var passwordIsValid = bcrypt.compareSync(
@@ -30,7 +30,7 @@ exports.signin = (req, res) => {
                 });
             }
 
-            var token = jwt.sign({ id: user.id }, config.secret, {
+            var token = jwt.sign({id: user.id}, config.secret, {
                 expiresIn: 86400 // 24 hours
             });
 
@@ -49,14 +49,14 @@ exports.signin = (req, res) => {
             });
         })
         .catch(err => {
-            res.status(500).send({ message: err.message });
+            res.status(500).send({message: err.message});
         });
 };
 
 exports.signup = (req, res) => {
     // Save User to Database
 
-    
+
     User.create({
         username: req.body.username,
         email: req.body.email,
@@ -83,7 +83,7 @@ exports.signup = (req, res) => {
             }
         })
         .catch(err => {
-            res.status(500).send({ message: err.message });
+            res.status(500).send({message: err.message});
         });
 };
 
