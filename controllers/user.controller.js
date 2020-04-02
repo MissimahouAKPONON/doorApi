@@ -44,15 +44,28 @@ exports.createScenario = (req, res) => {
 };
 
 exports.getAllScenario = (req, res) => {
-    DoorToDoor.findAll({
+    // DoorToDoor.findAll({
+    //     include:[{
+    //         model: Scenario,
+    //         where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
+    //     }]
+    // }).then((datas) => {
+    //         res.status(200).send(datas);
+    // }).catch((error) => {
+    //     res.send({datas: error});
+    // });
+
+    DoorToDoor.findById(1
+        ,{
         include:[{
             model: Scenario,
             where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
         }]
-    }).then((datas) => {
-            res.status(200).send(datas);
+    }
+    ).then((result) => {
+            res.status(200).send(result);
     }).catch((error) => {
-        res.send({datas: error});
+        res.status(401).send({error: error});
     });
 
 };
