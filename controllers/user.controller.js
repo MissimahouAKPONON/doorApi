@@ -62,12 +62,18 @@ exports.userBoard = (req, res) => {
 };
 
 exports.getDoor = (req, res) => {
-    DoorToDoor.findById(req.params.id,{
-        include:[{
-            model: Scenario,
-            where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
-        }]
-    }).then((result) => {
+    // res.status(200).send(req.params.id);
+    var id = 0;
+    id = parseInt(req.params.id);
+
+    DoorToDoor.findById(id
+    //     ,{
+    //     include:[{
+    //         model: Scenario,
+    //         where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
+    //     }]
+    // }
+    ).then((result) => {
             res.status(200).send(result);
     }).catch((error) => {
         res.status(401).send({error: error});

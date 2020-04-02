@@ -38,7 +38,6 @@ module.exports = (app) => {
   );
   app.get(
     "/api/user/doorlist/door/:id",
-    // [authJwt.verifyToken],
     controller.getDoor
     );
   app.post(
