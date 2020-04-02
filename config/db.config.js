@@ -4,7 +4,7 @@ module.exports = {
     PASSWORD: "2d4da2ca",
     DB: "heroku_44d75109700ef34",
     dialect: "mysql",
-    reconnect: true,
+    // reconnect: true,
     pool: {
         max: 5,
         min: 0,
