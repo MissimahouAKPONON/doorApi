@@ -35,11 +35,8 @@ module.exports = (app) => {
         // [authJwt.verifyToken],
         controller.getAllScenario
     );
-    app.get(
-        '/api/door/:doorid',
-        // [authJwt.verifyToken, authJwt.isAdmin],
-        controller.porteById
-    );
+    app.route('/api/door/:doorid')
+        .get(controller.porteById);
     app.post(
         "/api/admin/door",
         // [authJwt.verifyToken, authJwt.isAdmin],
