@@ -38,7 +38,7 @@ module.exports = (app) => {
   );
   app.get(
     "/api/user/doorlist/door/:id",
-    [controller.getPorteById]
+    controller.getPorteById
     );
   app.post(
       "/api/admin/door",
