@@ -79,7 +79,7 @@ exports.getPorteById = (req, res) => {
     var id = 0;
     id = parseInt(req.params.id);
 // res.status(200).send(id);
-    DoorToDoor.findOne(id
+    DoorToDoor.findOne(1
         ,{
         include:[{
             model: Scenario,

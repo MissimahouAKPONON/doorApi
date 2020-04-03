@@ -37,7 +37,7 @@ module.exports = (app) => {
       controller.getAllScenario
   );
   app.get(
-    "/api/user/doorlist/door/:id",
+    "/api/user/doorlist/door",
     controller.getPorteById
     );
   app.post(
