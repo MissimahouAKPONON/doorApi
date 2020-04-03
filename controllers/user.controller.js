@@ -74,23 +74,23 @@ exports.userBoard = (req, res) => {
     res.status(200).send("User Content.");
 };
 
-exports.getPorte = (req, res) => {
+exports.getPorteById = (req, res) => {
 
     var id = 0;
     id = parseInt(req.params.id);
-res.status(200).send(id);
-    // DoorToDoor.findById(id
-    // //     ,{
-    // //     include:[{
-    // //         model: Scenario,
-    // //         where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
-    // //     }]
-    // // }
-    // ).then((result) => {
-    //         res.status(200).send(result);
-    // }).catch((error) => {
-    //     res.status(401).send({error: error});
-    // });
+// res.status(200).send(id);
+    DoorToDoor.findOne(id
+        ,{
+        include:[{
+            model: Scenario,
+            where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
+        }]
+    }
+    ).then((result) => {
+            res.status(200).send(result);
+    }).catch((error) => {
+        res.status(404).send({error: error});
+    });
 };
 
 
