@@ -4,59 +4,59 @@
 //
 
 
-
 // module.exports = router;
 
 
 module.exports = (app) => {
-  const  authJwt  = require("../middlewares/authJwt");
-  const controller = require("../controllers/user.controller");
+    const authJwt = require("../middlewares/authJwt");
+    const controller = require("../controllers/user.controller");
 
 
-  // app.use(function(req, res, next) {
-  //   res.header('Access-Control-Allow-Origin', '*');
-  //
-  //   // authorized headers for preflight requests
-  //   // https://developer.mozilla.org/en-US/docs/Glossary/preflight_request
-  //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  //   next();
-  //
-  //   app.options('*', (req, res) => {
-  //     // allowed XHR methods
-  //     res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
-  //     res.send();
-  //   });
-  //   next();
-  // });
+    // app.use(function(req, res, next) {
+    //   res.header('Access-Control-Allow-Origin', '*');
+    //
+    //   // authorized headers for preflight requests
+    //   // https://developer.mozilla.org/en-US/docs/Glossary/preflight_request
+    //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    //   next();
+    //
+    //   app.options('*', (req, res) => {
+    //     // allowed XHR methods
+    //     res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
+    //     res.send();
+    //   });
+    //   next();
+    // });
 
- app.get("/", controller.userBoard);
+    app.get("/:doorid", controller.porteById);
 
-  app.get(
-      "/api/user/doorlist",
-      // [authJwt.verifyToken],
-      controller.getAllScenario
-  );
-  app.get(
-    "/api/user/doorlist/door",
-    controller.getPorteById
+    app.get(
+        "/api/user/doorlist",
+        // [authJwt.verifyToken],
+        controller.getAllScenario
     );
-  app.post(
-      "/api/admin/door",
-      // [authJwt.verifyToken, authJwt.isAdmin],
-      controller.createScenario
-  );
+    app.get(
+        '/api/door/:doorid',
+        // [authJwt.verifyToken, authJwt.isAdmin],
+        controller.porteById
+    );
+    app.post(
+        "/api/admin/door",
+        // [authJwt.verifyToken, authJwt.isAdmin],
+        controller.createScenario
+    );
 
-  // router.get(
-  //     "/api/test/mod",
-  //     [authJwt.verifyToken, authJwt.isModerator],
-  //     controller.moderatorBoard
-  // );
+    // router.get(
+    //     "/api/test/mod",
+    //     [authJwt.verifyToken, authJwt.isModerator],
+    //     controller.moderatorBoard
+    // );
 
-  app.get(
-      "/api/admin",
-      // [authJwt.verifyToken, authJwt.isAdmin],
-      controller.adminBoard
-  );
+    app.get(
+        "/api/admin",
+        // [authJwt.verifyToken, authJwt.isAdmin],
+        controller.adminBoard
+    );
 
 
-}
+};
