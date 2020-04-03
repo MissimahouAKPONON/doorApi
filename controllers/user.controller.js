@@ -74,7 +74,7 @@ exports.userBoard = (req, res) => {
     res.status(200).send("User Content.");
 };
 
-exports.getDoor = (req, res) => {
+exports.getPorte = (req, res) => {
 
     var id = 0;
     id = parseInt(req.params.id);
