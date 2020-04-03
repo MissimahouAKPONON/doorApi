@@ -79,13 +79,13 @@ exports.porteById = (req, res) => {
     var id = 0;
     id = parseInt(req.params.doorid);
 // res.status(200).send(id);
-    DoorToDoor.findOne(id
-        // ,{
-        // include:[{
-        //     model: Scenario,
-        //     where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
-        // }]
-    // }
+    DoorToDoor.findByPk(id
+        ,{
+        include:[{
+            model: Scenario,
+            where: { doorToDoorId: db.Sequelize.col('doorToDoors.id') }
+        }]
+    }
     ).then((result) => {
             res.status(200).send(result);
     }).catch((error) => {
